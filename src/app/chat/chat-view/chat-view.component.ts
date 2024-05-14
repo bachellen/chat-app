@@ -46,10 +46,10 @@ export class ChatViewComponent implements OnInit {
 
     this.chatService.sendMessage(message).subscribe(response => {
 
-      // this.messages.push({text: response.message,
-      //   timestamp: response.timestamp,  
-      //   author :{id: this.authService.getCurrentUser(), name:'User'},
-      // });
+      this.messages.push({text: response.message,
+        timestamp: response.timestamp,  
+        author :{id: this.authService.getCurrentUser(), name:'User'},
+      });
   
       this.newMessage = '';
     }, error => {
