@@ -1,0 +1,10 @@
+<div class="sidebar">
+  <h3>Online Users</h3>
+  <div *ngFor="let user of onlineUsers" class="user">
+    {{ user.name }}
+  </div>
+  <h3>Offline Users</h3>
+  <div *ngFor="let user of offlineUsers" class="user">
+    {{ user.name }}
+  </div>
+</div>

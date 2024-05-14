@@ -1,0 +1,11 @@
+<div class="chat-container">
+  <app-user-sidebar></app-user-sidebar>
+  <div class="chat-window">
+    <kendo-chat
+      [messages]="messages"
+      [user]="currentUser"
+      (sendMessage)="sendMessage($event)"
+    >
+    </kendo-chat>
+  </div>
+</div>
