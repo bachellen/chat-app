@@ -1,1 +1,31 @@
- 
+.sidebar {
+    padding: 10px;
+    background-color: #f4f4f4;
+  }
+  
+  .logout-button {
+    display: block;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .user {
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .user.selected {
+    background-color: #d3d3d3;
+  }
+  
+  span.online {
+    color: green;
+  }
+  
+  span.offline {
+    color: black;
+  }

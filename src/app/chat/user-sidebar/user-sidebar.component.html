@@ -1,10 +1,9 @@
 <div class="sidebar">
-  <h3>Online Users</h3>
-  <div *ngFor="let user of onlineUsers" class="user">
-    {{ user.name }}
-  </div>
-  <h3>Offline Users</h3>
-  <div *ngFor="let user of offlineUsers" class="user">
+  <button (click)="logout()" class="logout-button">Logout</button>
+  
+  <h3>Users</h3>
+  <div *ngFor="let user of users" class="user" (click)="selectUser(user)">
+    <span [class.online]="user.online" [class.offline]="!user.online">●</span>
     {{ user.name }}
   </div>
 </div>

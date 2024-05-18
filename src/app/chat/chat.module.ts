@@ -7,6 +7,7 @@ import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
 import { NbChatModule } from '@nebular/theme';
 import { ConversationalUIModule } from '@progress/kendo-angular-conversational-ui';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChatSessionComponent } from './chat-session/chat-session.component';
 
 
 
@@ -14,7 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     ChatViewComponent,
-    UserSidebarComponent
+    UserSidebarComponent,
+    ChatSessionComponent
   ],
   imports: [
     CommonModule,

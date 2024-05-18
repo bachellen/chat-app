@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ export class AuthService {
   private userid: string;
   private token: string | null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.userid = JSON.parse(localStorage.getItem('user') || '{}');
     this.token = localStorage.getItem('token');
   }
@@ -41,6 +43,8 @@ export class AuthService {
     localStorage.removeItem('user');
     this.token = null;
     this.userid = '';
+    this.router.navigate(['/auth/login']); // Redirect to login page
+
   }
 
   setSession(token: string, user: any): void {

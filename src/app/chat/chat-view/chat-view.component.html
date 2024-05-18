@@ -1,11 +1,15 @@
 <div class="chat-container">
-  <app-user-sidebar></app-user-sidebar>
-  <div class="chat-window">
-    <kendo-chat
-      [messages]="messages"
-      [user]="currentUser"
-      (sendMessage)="sendMessage($event)"
-    >
-    </kendo-chat>
+  <app-user-sidebar (userSelected)="onUserSelected($event)"></app-user-sidebar>
+  <div class="chat-tabs">
+    <ul>
+      <li *ngFor="let tab of tabs" [class.selected]="tab.id === selectedTab" (click)="selectedTab = tab.id">
+        <span>{{ tab.name }}</span>
+        <span [class.online]="tab.online" [class.offline]="!tab.online">●</span>
+        <button (click)="closeTab(tab.id)">x</button>
+      </li>
+    </ul>
+  </div>
+  <div class="chat-window" *ngIf="selectedTab">
+    <app-chat-session [receiverId]="selectedTab" [parent]="this"></app-chat-session>
   </div>
 </div>

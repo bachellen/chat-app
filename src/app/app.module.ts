@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
@@ -17,6 +18,7 @@ import { NbThemeModule } from '@nebular/theme';
 import { ChatModule } from '@progress/kendo-angular-conversational-ui';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+const config: SocketIoConfig = { url: 'http://localhost:5001', options: {} };
 
 
 @NgModule({
@@ -33,6 +35,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ChatModule,
     HttpClientModule,
     NbThemeModule.forRoot(),
+    SocketIoModule.forRoot(config)
     
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, provideAnimationsAsync(),],
