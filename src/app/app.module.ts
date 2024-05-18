@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NbThemeModule } from '@nebular/theme';
 import { ChatModule } from '@progress/kendo-angular-conversational-ui';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 
@@ -34,7 +35,7 @@ import { ChatModule } from '@progress/kendo-angular-conversational-ui';
     NbThemeModule.forRoot(),
     
   ],
-  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, provideAnimationsAsync(),],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
