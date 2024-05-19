@@ -43,9 +43,20 @@ export class AuthService {
     localStorage.removeItem('user');
     this.token = null;
     this.userid = '';
-    this.router.navigate(['/auth/login']); // Redirect to login page
+    console.log("Logging out");
 
-  }
+    this.http.post<any>(`${this.baseUrl}/logout`, {}).subscribe(
+      response => {
+        console.log(response.message);
+        this.router.navigate(['/auth/login']); // Redirect to login page
+      },
+      error => {
+        console.error('Logout failed', error);
+        this.router.navigate(['/auth/login']); // Redirect to login page even if the logout fails
+      }
+    );
+  
+}
 
   setSession(token: string, user: any): void {
     this.token = token;

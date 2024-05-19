@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
-import { Message, User } from '@progress/kendo-angular-conversational-ui';
 import { Socket } from 'ngx-socket-io';
 
 
@@ -14,6 +13,7 @@ export class ChatService {
   private baseUrl = 'http://localhost:5001/messages';  // Update with your Flask server URL
   public readonly responses: Subject<string> = new Subject<string>();
   currentMessages = this.socket.fromEvent<any>('new_message');
+  tUsersPresence = this.socket.fromEvent<any>('status_update')
 
 
   constructor(private http: HttpClient,  private socket: Socket) {
@@ -41,5 +41,10 @@ export class ChatService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<any[]>(`${this.baseUrl}/get_messages?receiver_id=${receiverId}`, { headers });
+  }
+  getUsers(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get('http://localhost:5001/auth/users',  { headers });
   }
 }

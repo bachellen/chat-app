@@ -5,7 +5,7 @@
       <li *ngFor="let tab of tabs" [class.selected]="tab.id === selectedTab" (click)="selectedTab = tab.id">
         <span>{{ tab.name }}</span>
         <span [class.online]="tab.online" [class.offline]="!tab.online">●</span>
-        <button (click)="closeTab(tab.id)">x</button>
+        <button (click)="closeTab(tab.id, $event)">x</button>
       </li>
     </ul>
   </div>
